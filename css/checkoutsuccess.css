@@ -1,0 +1,8 @@
+.checkout-message {
+  margin: 100px auto;
+  max-width: 400px;
+}
+
+.checkout-message h1, h2 {
+  margin: 20px;
+}

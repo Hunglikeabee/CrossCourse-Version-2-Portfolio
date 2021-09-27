@@ -1,0 +1,131 @@
+.cart-page {
+  max-width: 800px;
+  margin: 50px auto;
+  display: grid;
+}
+
+.checkout-item {
+  margin: 10px;
+  padding: px;
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.checkout-item:nth-child(odd) {
+  background-color: var(--gray);
+}
+
+.checkout-item:nth-child(even) {
+  background-color: var(--deeppurple);
+}
+
+.checkout-image {
+  width: 100px;
+  height: 135px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 100px 135px;
+}
+
+.checkout-name {
+  padding: 0px 5px;
+}
+
+.checkout-price {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 0px 5px;
+}
+
+.checkout-total {
+  text-align: center;
+  background-color: var(--gray);
+  border-radius: var(--borderradius1);
+  width: 200px;
+  margin: 10px auto;
+  padding: 5px;
+  font-weight: bold;
+}
+
+/* Checkout form */
+
+.cart__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 60px auto;
+  max-width: 600px;
+  grid-gap: 30px;
+  font-size: 13px;
+}
+
+.cart__form input {
+  border: none;
+  height: 25px;
+  border-radius: var(--borderradius1);
+  margin: 5px;
+}
+
+.cart__form-userinfo {
+  display: grid;
+  padding: 0px 20px;
+}
+
+.cart__form-cardinfo {
+  display: grid;
+  max-width: 300px;
+  margin: 60px auto;
+}
+
+.cart__form-cvcdate {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cart__form-cvcdate input {
+  max-width: 50px;
+}
+
+.cart__form-fixdatecvc {
+  display: grid;
+  margin: 10px;
+}
+
+.cart__pay-button {
+  text-decoration: none;
+  background-color: var(--green);
+  border-radius: var(--borderradius1);
+  border: none;
+  font-weight: bold;
+  width: 80px;
+  text-align: center;
+  color: black;
+  padding: 5px;
+  margin: 40px auto;
+}
+
+@media only screen and (max-width: 650px) {
+
+  .checkout-image {
+    width: 80px;
+    height: 120px;
+  }
+
+  .checkout-name {
+    font-size: 12px;
+  }
+  
+  .checkout-price {
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  .cart__form {
+    grid-template-columns: 1fr;
+  }
+
+
+
+}

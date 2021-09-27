@@ -1,0 +1,84 @@
+.overlay__whitebox {
+  display: grid;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.overlay__whitebox div, img {
+  margin: 0 auto;
+  margin-top: 40px
+}
+
+.form__account {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+}
+
+legend {
+  text-align: center;
+  margin-bottom: 40%;
+  margin-top: 20%;
+}
+
+label {
+  margin-left: 14%;
+}
+
+.form_account input {
+  margin-top: 20px;
+}
+
+#email {
+  margin: auto;
+  margin-bottom: 10px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+#password {
+  margin: auto;
+  margin-bottom: 10px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.login-cta {
+  margin: auto;
+  width: 60%;
+  background-color: var(--green);
+  color: var(--white);
+  border-radius: 5px;
+  border-style: none;
+  padding: 8px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.forgot-cta, .newacc-cta {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  background-color: var(--blue);
+  color: var(--white);
+  border-radius: 5px;
+  border-style: none;
+  padding: 5px;
+  margin: 5px auto;
+}
+
+@media only screen and (max-height: 600px) {
+  legend {
+    margin: 5% auto;
+  }
+
+  .newacc-cta {
+    padding: 4px;
+  }
+
+  .forgot-cta {
+    padding: 3px;
+  }
+}
