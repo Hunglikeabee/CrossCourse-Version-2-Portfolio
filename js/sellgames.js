@@ -25,8 +25,9 @@ async function sendGame(event) {
     
     sendOptions = {
         headers: {
+            "Access-Control-Allow-Headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type",
             "Accept": "application/json",
-            "Authorization": "Basic Auth",
+            "Authorization": "Basic auth",
             "username": "ck_5afeb0825ec74753cf9cd2cefaf2ba52bceaa3f0",
             "password": "cs_23566be8941b702521af9adc83708c15f1923e13"
         },

@@ -2,7 +2,8 @@ const gameDetails  = document.querySelector(".game-details");
 const cart = document.querySelector(".cart");
 const cartList = document.querySelector(".cart-list");
 const totalContainer = document.querySelector(".cart-total");
-let cartArray = [];
+const cartQuantity = document.querySelector(".cart-quantity");
+
 
 const getParameter = document.location.search;
 const params = new URLSearchParams(getParameter);
@@ -33,37 +34,16 @@ async function getRestApi() {
             }
         }
 
-
         const buttons = document.querySelectorAll(".product-button");
-
         buttons.forEach(function(button) {
             button.onclick = function(event){
                 const itemToAdd = result.find(item => item.id == event.target.dataset.product);
-                cartArray.push(itemToAdd);
-                showCart(cartArray);
-                localStorage.setItem("cartList", JSON.stringify(cartArray));
+                cartItems.push(itemToAdd);
+                localStorage.setItem("cartList", JSON.stringify(cartItems));
+                showCart(cartItems);
             }
         });
-        
-        function showCart(cartItems) {
-            cart.style.display = "block";
-            cartList.innerHTML = "";
-            let total = 0;
-            cartItems.forEach(function(cartElement) {
-                
-                total += parseInt(cartElement.prices.price);
-                cartList.innerHTML += `
-                                        <div class="cart-item">
-                                            <a href="details.html?game=${cartElement.id}">
-                                                <h4>${cartElement.name}</h4>
-                                                <div style="background-image: url(${cartElement.images[0].src})" class="cart-image"></div>
-                                            </a>
-                                        </div>
-                                      `
-            });
-            const decimalFix = parseFloat(`${total}`).toFixed(2);
-            totalContainer.innerHTML = `Total: ${decimalFix}NOK`;
-        };
+
     }
     catch(error) {
         console.log(error);

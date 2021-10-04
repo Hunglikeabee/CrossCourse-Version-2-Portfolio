@@ -7,6 +7,7 @@
         <title>Search result | The Universe of Games</title>
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/search.css">
+        <link rel="stylesheet" href="css/shoppingcartpopup.css">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
         <script src="https://kit.fontawesome.com/409a57b09b.js" crossorigin="anonymous"></script>
                 <!-- Hotjar Tracking Code for https://sleepy-heyrovsky-07d0b1.netlify.app/ -->
@@ -25,10 +26,10 @@
         <header>
             <section class="header__main">
                 <a class="logo" aria-label="Game hub logo link main page" href="index.html"></a>
-                <form action="search.html" role="search" class="search__container">
+                <div  role="search" class="search__container">
                     <input type="text" class="search__input" placeholder="Search..." alt="Search bar, enter your query">
-                    <button aria-label="Search Button" class="search__button" type="submit" value="GO"><i class="fas fa-search"></i></button>
-                </form>
+                    <button aria-label="Search Button" class="search__button"><i class="fas fa-search"></i></button>
+                </div>
                 <nav class="nav__main">
                     <ul>
                         <li>
@@ -85,11 +86,7 @@
         </header>
         <main>
             <div class="overlay__whitebox">
-                <h2>Search results for "Farycry6"</h2>
-                <p>1 results found for "Farcry6"</p>
-                <a href="details.html?game=0">
-                <img src="https://store.ubi.com/dw/image/v2/ABBS_PRD/on/demandware.static/-/Sites-masterCatalog/default/dw7387f247/images/large/5ecd2c925cdf9a1528a8c1d1.jpg?sw=341&sh=450&sm=fit" alt="Farcry6 game">
-                </a>
+
             </div>
         </main>
         <footer>
@@ -151,5 +148,7 @@
             </section>
             <div class="copyright">&copy; Game Hub Inc</div>
         </footer>
+        <script src="js/script.js"></script>
+        <script src="js/search.js"></script>
     </body>
 </html>

@@ -2,7 +2,7 @@ const fullName = document.querySelector("#contact__form-fullname");
 const phoneNumber = document.querySelector("#contact__form-phonenumber");
 const email = document.querySelector("#contact__form-email");
 const textArea = document.querySelector("#contact__form-textarea");
-const form = document.querySelector("#contact__form");
+const form = document.querySelector(".contact__form");
 const button = document.querySelector(".contact__form-button");
 const message = document.querySelector(".contact__form-message");
 
@@ -26,8 +26,40 @@ email.addEventListener("keyup", () => {
     checkEmail();
 });
 
+fullName.addEventListener("focusout", () => {
+    checkButton();
+    checkNameFocusOut();
+});
+
+phoneNumber.addEventListener("focusout", () => {
+    checkButton();
+    checkNumberFocusOut();
+});
+
+email.addEventListener("focusout", () => {
+    checkButton();
+    checkEmailFocusOut();
+});
 
 function checkName() {
+    if(checkForm(fullName.value, 2)) {
+        fullNameError.style.display = "none";
+    }
+}
+
+function checkNumber() {
+    if(validatePhone(phoneNumber.value)) {
+        phoneNumberError.style.display = "none";
+    }
+}
+
+function checkEmail() {
+    if(validateEmail(email.value)) {
+        emailError.style.display = "none";
+    }
+}
+
+function checkNameFocusOut() {
     if(checkForm(fullName.value, 2)) {
         fullNameError.style.display = "none";
     }
@@ -36,8 +68,8 @@ function checkName() {
     }
 }
 
-function checkNumber() {
-    if(checkForm(phoneNumber.value, 8) && !isNaN(phoneNumber.value)) {
+function checkNumberFocusOut() {
+    if(validatePhone(phoneNumber.value)) {
         phoneNumberError.style.display = "none";
     }
     else {
@@ -45,7 +77,7 @@ function checkNumber() {
     }
 }
 
-function checkEmail() {
+function checkEmailFocusOut() {
     if(validateEmail(email.value)) {
         emailError.style.display = "none";
     }
@@ -55,7 +87,7 @@ function checkEmail() {
 }
 
 function checkButton() {
-    if(checkForm(fullName.value, 2) && checkForm(phoneNumber.value, 8) && validateEmail(email.value)) {
+    if(checkForm(fullName.value, 2) && validatePhone(phoneNumber.value) && validateEmail(email.value)) {
         button.disabled = false;
     }
     else {
@@ -65,15 +97,15 @@ function checkButton() {
 }
 
 
-form.addEventListener("submit", validateForm);
+button.addEventListener("click", validateForm);
 
 function validateForm(event) {
     event.preventDefault();
     message.style.display = "grid";
     message.innerHTML = "Message sendt!"
-    
+    button.disabled = true;
     form.reset();
-    button.disabled = "true";
+   
 }
 
 function checkForm(value, length) {
@@ -85,8 +117,18 @@ function checkForm(value, length) {
     }
 }
 
+/* RegEX */
+
+//Email
 function validateEmail(email) {
     const regEx = /\S+@\S+\.\S+/;
     const patternMatches = regEx.test(email);
+    return patternMatches;
+}
+
+//Norwegian phone number
+function validatePhone(phone) {
+    const regEx = /^(0047|\+47|47)?[2-9]\d{7}$/;
+    const patternMatches = regEx.test(phone);
     return patternMatches;
 }
