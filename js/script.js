@@ -1,5 +1,3 @@
-let counter = 0;
-
 /* Check if there is something in localstorage */
 
 if (JSON.parse(localStorage.getItem("cartList")) === null) {
@@ -9,9 +7,19 @@ else {
     var cartItems = JSON.parse(localStorage.getItem("cartList"));
 }
 
-/* Add Shoppingcart button */
 
-document.body.innerHTML += `<div class="cart__button-body"><i id="plus-circle" class="fas fa-plus-circle"></i></div>`
+// THE POP SHOP CART!
+/* Add Shoppingcart and button */
+
+document.body.innerHTML += `
+<div class="cart">
+<div class="shoppingcart__total-checkout">
+    <a href="shoppingcart.html" class="cart-button">Checkout</a>
+    <div class="cart-total">Total:</div>
+    <div class="cart-quantity"></div>
+</div>
+<div class="cart-list"></div>
+</div><div class="cart__button-body"><i id="plus-circle" class="fas fa-plus-circle"></i></div>`
 
 const cartButtonBody = document.querySelector(".cart__button-body");
 

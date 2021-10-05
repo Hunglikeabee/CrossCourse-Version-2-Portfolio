@@ -25,6 +25,7 @@ async function sendGame(event) {
     
     sendOptions = {
         headers: {
+
             "Accept": "application/json",
             "Authorization": "Basic auth",
             "username": "ck_5afeb0825ec74753cf9cd2cefaf2ba52bceaa3f0",
