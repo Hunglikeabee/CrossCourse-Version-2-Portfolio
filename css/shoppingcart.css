@@ -6,12 +6,12 @@
 
 .checkout-item {
   margin: 10px;
-  padding: px;
+  padding: 10px;
   border: 2px solid black;
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  justify-items: center;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  
 }
 
 .checkout-item:nth-child(odd) {
@@ -48,6 +48,24 @@
   margin: 10px auto;
   padding: 5px;
   font-weight: bold;
+}
+
+.quantity__container {
+display: flex;
+}
+
+.quantity__container * {
+  margin: 10px;
+  align-self: center;
+}
+
+.quantity-number {
+  background-color: var(--white);
+  color: black;
+  padding: 0px 8px;
+  border-radius: var(--borderradius1);
+  font-weight: bold;
+  font-size: 22px;
 }
 
 /* Checkout form */
@@ -126,6 +144,9 @@
     grid-template-columns: 1fr;
   }
 
+  .checkout-item {
+    flex-direction: column;
+  }
 
 
 }
