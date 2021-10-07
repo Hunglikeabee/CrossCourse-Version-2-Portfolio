@@ -25,13 +25,22 @@ document.body.innerHTML += `
     <a href="shoppingcart.html" class="cart-button">Checkout</a>
     <div class="cart-total">Total:</div>
     <div class="cart-quantity"></div>
+    <button class="clear-shoppingcart">Delete all products</button>
 </div>
 <div class="cart-list"></div>
 </div><div class="cart__button-body"><i id="cart-circle" class="fas fa-shopping-cart"></i></i></div>`
 
 const cartButtonBody = document.querySelector(".cart__button-body");
+const clearButton = document.querySelector(".clear-shoppingcart");
 
 cartButtonBody.addEventListener("click", showCart)
+clearButton.addEventListener("click", clearLocalstorageButton);
+
+function clearLocalstorageButton() {
+    localStorage.clear("cartList");
+    sessionStorage.setItem("reload", "true")
+    location.reload();
+}
 
 
 function showCart() {

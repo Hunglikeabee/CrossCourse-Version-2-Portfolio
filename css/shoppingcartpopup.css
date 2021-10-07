@@ -18,8 +18,22 @@
   .cart__button-body:hover {
     background-color: var(--green);
     border: 1px solid black;
-  
   }
+
+  .clear-shoppingcart {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    display: grid;
+    text-align: center;
+    background-color: var(--black);
+    color: white;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    margin: 10px 0px;
+  }
+
   
   #cart-circle {
     position: absolute;
