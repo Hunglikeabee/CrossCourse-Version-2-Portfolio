@@ -7,6 +7,14 @@ else {
     var cartItems = JSON.parse(localStorage.getItem("cartList"));
 }
 
+/* Check to see if there is reason to open Shoppingcart */
+window.onload = function() {
+    var getStatus = sessionStorage.getItem("reload");
+    if (getStatus) {
+        sessionStorage.removeItem("reload");
+        showCart();
+    }
+}
 
 // THE POP SHOP CART!
 /* Add Shoppingcart and button */
@@ -19,7 +27,7 @@ document.body.innerHTML += `
     <div class="cart-quantity"></div>
 </div>
 <div class="cart-list"></div>
-</div><div class="cart__button-body"><i id="plus-circle" class="fas fa-plus-circle"></i></div>`
+</div><div class="cart__button-body"><i id="cart-circle" class="fas fa-shopping-cart"></i></i></div>`
 
 const cartButtonBody = document.querySelector(".cart__button-body");
 
@@ -28,7 +36,7 @@ cartButtonBody.addEventListener("click", showCart)
 
 function showCart() {
     if( event.target.classList == "cart__button-body" && cart.style.display == "block" || 
-        event.target.classList == "fas fa-plus-circle" && cart.style.display == "block" ) {
+        event.target.classList == "fas fa-shopping-cart" && cart.style.display == "block" ) {
         cart.style.display = "none";
     }
     else {
@@ -60,39 +68,38 @@ function showCart() {
             `
         };
                 
-    /* Add minus/plus buttons to products */
-
-
-    const minusButton = document.querySelectorAll(".minus-button");
-    const plusButton = document.querySelectorAll(".plus-button");
-
-    minusButton.forEach(function(button) {
-        button.onclick = function(event){
-            const itemToMinus = cartItems.find(item => item.id == event.target.dataset.product);
-
-            if(itemToMinus.quantity === 1) {
-                itemToMinus.removeItem(itemToMinus);
-            }
-            else {
-                itemToMinus.quantity = itemToMinus.quantity - 1;
-            }
-
-            showCart();
-            localStorage.setItem("cartList", JSON.stringify(cartItems));
-        }
-    });
-
-    plusButton.forEach(function(button) {
-        button.onclick = function(event){
-            const itemToPlus = cartItems.find(item => item.id == event.target.dataset.product);
-
-            itemToPlus.quantity = itemToPlus.quantity + 1
-
-            showCart();
-            localStorage.setItem("cartList", JSON.stringify(cartItems));
-        }
-    })
-
+                /* Add minus/plus buttons to products */
+                const minusButton = document.querySelectorAll(".minus-button");
+                const plusButton = document.querySelectorAll(".plus-button");
+            
+                minusButton.forEach(function(button) {
+                    button.onclick = function(event){
+                        const itemToMinus = cartItems.find(item => item.id == event.target.dataset.product);
+                            if(itemToMinus.quantity === 1) {
+                                let newCart = cartItems.filter((item) => item.id !== itemToMinus.id)
+                                localStorage.setItem("cartList", JSON.stringify(newCart));
+                                sessionStorage.setItem("reload", "true")
+                                location.reload();
+                            }
+                            else {
+                                itemToMinus.quantity = itemToMinus.quantity - 1;
+                                localStorage.setItem("cartList", JSON.stringify(cartItems));
+                            }
+                            showCart();
+                    }
+                    
+                });
+            
+                plusButton.forEach(function(button) {
+                    button.onclick = function(event){
+                        const itemToPlus = cartItems.find(item => item.id == event.target.dataset.product);
+            
+                        itemToPlus.quantity = itemToPlus.quantity + 1
+            
+                        showCart();
+                        localStorage.setItem("cartList", JSON.stringify(cartItems));
+                    }
+                })
 
         const decimalFix = parseFloat(`${total}`).toFixed(2);
         totalContainer.innerHTML = `Total: ${decimalFix}NOK`;
@@ -124,6 +131,3 @@ const cart = document.querySelector(".cart");
 const cartList = document.querySelector(".cart-list");
 const totalContainer = document.querySelector(".cart-total");
 const cartQuantity = document.querySelector(".cart-quantity");
-
-
-

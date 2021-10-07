@@ -11,9 +11,9 @@ async function getResults() {
         console.log(searchResult);
 
         const overlayWhitebox = document.querySelector(".overlay__whitebox")
-
+        overlayWhitebox.innerHTML = "";
         if(searchResult.length === 0) {
-            overlayWhitebox.innerHTML = `Could not find anything match with ${searchQuery}`;
+            overlayWhitebox.innerHTML = `<h1>Could not find anything match with ${searchQuery}</h1>`;
         }
         else {
             for(let i = 0; i < searchResult.length; i++) {

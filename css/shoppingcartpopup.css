@@ -2,8 +2,9 @@
 
 .cart__button-body {
     position: fixed;
-    right: 30px;
-    bottom: 20px;
+    margin: 0 auto;
+    right: 15%;
+    bottom: 10px;
     background-color: var(--orange);
     width: 50px;
     height: 50px;
@@ -20,13 +21,13 @@
   
   }
   
-  #plus-circle {
+  #cart-circle {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9001;
-    font-size: 26px;
+    font-size: 20px;
   }
   
   .minus__container {
@@ -50,13 +51,12 @@
     color: black;
     max-width: 200px;
     min-width: 200px;
-    max-height: 70vh;
+    max-height: 60vh;
     margin: auto;
-    left: 10px;
-    bottom: 10px;
+    right: 15%;
+    bottom: 70px;
     display: none;
     overflow-y: scroll;
-    overflow-x: hidden;
   }
   
   .cart-item {
@@ -64,8 +64,9 @@
   }
   
   .cart-item h4 {
-    font-size: 12px;
+    font-size: 18px;
     color: black;
+    text-align: center;
   }
   
   .cart-image {
@@ -100,8 +101,20 @@
     display: flex;
     justify-content: space-between;
     margin: 10px;
+    font-weight: bold;
   }
   
   .minus-button, .plus-button {
     cursor: pointer;
+  }
+
+
+  @media only screen and (max-width: 1600px) {
+    .cart__button-body {
+        right: 20px;
+    }
+
+    .cart {
+        right: 20px;
+    }
   }

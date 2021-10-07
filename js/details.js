@@ -38,9 +38,33 @@ async function getRestApi() {
         buttons.forEach(function(button) {
             button.onclick = function(event){
                 const itemToAdd = result.find(item => item.id == event.target.dataset.product);
-                cartItems.push(itemToAdd);
+                
+                if(cartItems.length === 0 || !checkIfItsThere(itemToAdd.id)) {
+                        itemToAdd.quantity = 1;
+                        cartItems.push(itemToAdd);
+                }
+                else {
+                    for(let i = 0; i < cartItems.length; i++) {
+                        if (itemToAdd.id === cartItems[i].id) {
+                            cartItems[i].quantity = cartItems[i].quantity + 1;
+                            cartItems.join(itemToAdd.quantity);
+                        }
+                    }
+                }
+
+                function checkIfItsThere(id) {
+                    let counter = 0;
+                    for ( let i = 0; i < cartItems.length; i++) {
+                        if(cartItems[i].id == id) {
+                            counter++;
+                        }
+                    }
+                    if (counter > 0) {
+                        return true;
+                    }
+                }
+                showCart();
                 localStorage.setItem("cartList", JSON.stringify(cartItems));
-                showCart(cartItems);
             }
         });
 
