@@ -8,8 +8,6 @@ async function getResults() {
     try {
         const searchFetch = await fetch("https://noroffcors.herokuapp.com/" + searchAPI);
         const searchResult = await searchFetch.json();
-        console.log(searchResult);
-
         const overlayWhitebox = document.querySelector(".overlay__whitebox")
         overlayWhitebox.innerHTML = "";
         if(searchResult.length === 0) {

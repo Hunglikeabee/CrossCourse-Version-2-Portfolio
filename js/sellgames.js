@@ -12,6 +12,7 @@ const gameConditionValue = gameCondition.value;
 const CORS = "https://noroffcors.herokuapp.com/"
 
 async function sendGame(event) {
+    console.log("why!")
     event.preventDefault()
 
     const formData = JSON.stringify({
@@ -19,15 +20,14 @@ async function sendGame(event) {
         short_description: gameConditionValue,
         description: gamePlatformValue
     })
-
+    console.log("what")
 
     const sendGameApi = "https://hunglikeabee.one/CMS-CA/wp-json/wc/v2/products"
     
     sendOptions = {
         headers: {
-
-            "Accept": "application/json",
-            "Authorization": "Basic auth",
+            'Content-Type': 'application/json',
+            "Authorization": "Basic",
             "username": "ck_5afeb0825ec74753cf9cd2cefaf2ba52bceaa3f0",
             "password": "cs_23566be8941b702521af9adc83708c15f1923e13"
         },
@@ -44,4 +44,4 @@ async function sendGame(event) {
     }
 }
 
-formSellGame.addEventListener("submit", sendGame)
+formButton.addEventListener("click", sendGame)
