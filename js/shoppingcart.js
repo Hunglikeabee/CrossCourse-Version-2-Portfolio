@@ -2,10 +2,9 @@ const cartItems = JSON.parse(localStorage.getItem("cartList"))
 const cartContainer = document.querySelector(".checkout-list");
 const totalContainer = document.querySelector(".checkout-total");
 
-let total = 0;
-
 function makeShoppingCart() {
     cartContainer.innerHTML = "";
+    let total = 0;
 
     if (cartItems === null) {
         cartContainer.innerHTML = "";
