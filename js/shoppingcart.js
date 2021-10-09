@@ -58,14 +58,14 @@ function makeShoppingCart() {
             }
         })
     }
-
+    const decimalFix = parseFloat(`${total}`).toFixed(2);
+    totalContainer.innerHTML = `Total: ${decimalFix}NOK`;
 }
 
 
 
 makeShoppingCart();
 
-const decimalFix = parseFloat(`${total}`).toFixed(2);
-    totalContainer.innerHTML = `Total: ${decimalFix}NOK`;
+
 
 
